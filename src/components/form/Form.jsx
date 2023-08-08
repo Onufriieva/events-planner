@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { FormBox, Input, TextareaBox, Label, DivBox, DivCommon, Button } from './FormStyled'
+import { DivMain, FormBox, Input, TextareaBox, Label, DivBox, DivCommon, Button, Title } from './FormStyled'
 
 
 const nameInputId = nanoid(5);
@@ -15,8 +15,8 @@ const priorityInputId = nanoid(5);
 const Form = ({onSubmit, onChange, nameValue, dateValue, timeValue, placeValue, descriptionValue, categoryValue, pictureValue, priorityValue}) => {
       
   return(
-      <div>
-        <h1>Create new event</h1>
+      <DivMain>
+        <Title>Create new event</Title>
         <FormBox onSubmit={onSubmit}>
 
           <DivCommon>
@@ -120,7 +120,7 @@ const Form = ({onSubmit, onChange, nameValue, dateValue, timeValue, placeValue, 
           
           <Button type="submit">Add event</Button>
         </FormBox>
-      </div>  
+      </DivMain>  
     )
   }
   

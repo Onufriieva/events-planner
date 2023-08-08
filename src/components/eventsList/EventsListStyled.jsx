@@ -1,6 +1,24 @@
 import styled from "@emotion/styled";
 
 
+export const Section = styled.section`
+padding-left: 16px;
+padding-right: 16px;
+width: 1440px;
+`;
+
+export const Title = styled.h2`
+margin-top: 0px;
+margin-bottom: 0px;
+font-family: 'Poppins', sans-serif;
+font-size: 32px;
+font-weight: 600;
+line-height: 1.5;
+letter-spacing: 0em;
+text-align: left;
+color: #3F3F3F;
+`;
+
 export const List = styled.ul`
 display: flex;
 flex-wrap: wrap; 
@@ -13,11 +31,11 @@ export const ListItem = styled.li`
 text-align: center;
 margin-bottom: 30px;  
 margin-right: 30px; 
-padding: 15px; 
-width: 100%;
-flex-basis: calc((100% - 6 * 15px) / 5);
-background-color: #fff;
-border-radius: 4px;
+width: 302px;
+height: 480px;
+background-color: lazur;
+border-radius: 12px;
+border: 1px solid red;
 
 &:nth-of-type(4n) {
     margin-right: 0;
@@ -29,45 +47,51 @@ border-radius: 4px;
 `;
 
 
-
-export const ListBox = styled.div`
-padding: 60px;
-text-align: center;
+export const DateBox = styled.div`
+display: flex;
+justify-content: space-between;
+padding-left: 8px;
+padding-right: 8px;
+font-size: 14px;
+font-weight: 400;
+line-height: 1.7;
+color: #7B61FF;   
 `;
 
-export const Form = styled.form`
-margin-bottom: 20px;
+export const Date = styled.p`
+    padding-right: 8px;  
 `;
 
-export const Button = styled.button`
-  margin-right: 8px;
-  padding: 8px 16px;
-  border-radius: 2px;
-  background-color: #3f51b5;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  text-align: center;
-  display: inline-block;
-  color: #fff;
-  border: 0;
-  text-decoration: none;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 18px;
-  line-height: 24px;
-  font-style: normal;
-  font-weight: 500;
-  min-width: 180px;
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-  &:hover,
-  &:focus {
-    background-color: #303f9f;
-  }
+export const Time = styled.p`
+padding-right: 8px;  
 `;
 
-export const Input = styled.input`
-min-width: 180px;
-padding: 8px 16px;
-font-size: 18px;
-border-radius: 2px;
+export const Place = styled.p`
+    padding-right: 8px;  
+`;
+
+export const Name = styled.h3`
+    margin-top: 0px;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #1C1B1F;
+`;
+
+export const Description = styled.p`
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #1C1B1F;
+`;
+
+export const TextBox = styled.div`
+padding-left: 8px;
 `;
