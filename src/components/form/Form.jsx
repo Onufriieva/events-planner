@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import { FormBox, Input, TextareaBox, Label, DivBox, DivCommon, Button } from './FormStyled'
 
 
 const nameInputId = nanoid(5);
@@ -12,58 +13,29 @@ const priorityInputId = nanoid(5);
 
 
 const Form = ({onSubmit, onChange, nameValue, dateValue, timeValue, placeValue, descriptionValue, categoryValue, pictureValue, priorityValue}) => {
-    return(
+      
+  return(
       <div>
         <h1>Create new event</h1>
-        <form onSubmit={onSubmit}>
-          <label>Title
-            <input
+        <FormBox onSubmit={onSubmit}>
+
+          <DivCommon>
+          <DivBox> 
+          <Label>Title 
+          <Input
               type="text" 
               name="name"
-              title="Name may contain only letters, apostrophe, dash and spaces."
+              title="Title may contain only letters, apostrophe, dash and spaces."
               required
               onChange={onChange}
               value={nameValue}    
               id={nameInputId}          
             /> 
-          </label>
-            
-          <label>Select date
-            <input
-              type="date"
-              name="date"
-              required
-              onChange={onChange}
-              value={dateValue}  
-              id={dateInputId}            
-            />  
-          </label>
+          </Label>
 
-          <label>Select time
-            <input
-              type="time"
-              name="time"
-              required
-              onChange={onChange}
-              value={timeValue}  
-              id={timeInputId}            
-            />  
-          </label>
-
-          <label>Place
-            <input
-              type="text"
-              name="place"
-              title="Place may contain only letters, apostrophe, dash and spaces."
-              required
-              onChange={onChange}
-              value={placeValue}  
-              id={placeInputId}            
-            />  
-          </label>
-        
-          <label>Description
-            <input
+          
+          <Label>Description
+            <TextareaBox
               type="text"
               name="description"
               title="Description may contain only letters, apostrophe, dash and spaces."
@@ -72,39 +44,82 @@ const Form = ({onSubmit, onChange, nameValue, dateValue, timeValue, placeValue, 
               value={descriptionValue}  
               id={descriptionInputId}            
             />  
-          </label>
+          </Label>
+         </DivBox>          
+            
+         <DivBox>
+  <Label>Select date
+            <Input
+              type="date"
+              name="date"
+              required
+              onChange={onChange}
+              value={dateValue}  
+              id={dateInputId}            
+            />  
+          </Label>
 
-          <label>Category
-            <input
+          <Label>Select time
+            <Input
+              type="time"
+              name="time"
+              required
+              onChange={onChange}
+              value={timeValue}  
+              id={timeInputId}            
+            />  
+          </Label>
+
+          <Label>Place
+            <Input
+              type="text"
+              name="place"
+              title="Place may contain only letters, apostrophe, dash and spaces."
+              required
+              onChange={onChange}
+              value={placeValue}  
+              id={placeInputId}            
+            />  
+          </Label>
+         </DivBox>
+        
+         <DivBox>
+        <Label>Category
+            <Input
               type="text"
               name="category"
               onChange={onChange}
               value={categoryValue}  
               id={categoryInputId}            
             />  
-          </label>
+          </Label>
 
-          <label>Add picture
-            <input
-              type="file"
+          <Label>Add picture
+            <Input
+              type="text"
               name="picture"
               onChange={onChange}
               value={pictureValue}  
-              id={pictureInputId}            
+              id={pictureInputId}       
+              disabled     
             />  
-          </label>
+          </Label>
 
-          <label>Priority
-            <input
+          <Label>Priority
+            <Input
               type="text"
               name="priority"
               onChange={onChange}
               value={priorityValue}  
               id={priorityInputId}            
             />  
-          </label>
-          <button type="submit">Add event</button>
-        </form>
+          </Label>
+         </DivBox>
+          </DivCommon>
+        
+          
+          <Button type="submit">Add event</Button>
+        </FormBox>
       </div>  
     )
   }

@@ -78,7 +78,6 @@ export class Home extends Component {
   };
 
 
-
   removeEvents = (eventId) => {  
     this.setState(prevState => ({   
       events: prevState.events.filter(event => event.id !== eventId),

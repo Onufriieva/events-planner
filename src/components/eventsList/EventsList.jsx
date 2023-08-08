@@ -1,15 +1,18 @@
+import noImage from '../../images/no-image.png';
+import { List, ListItem } from './EventsListStyled'
+
 const EventsList = ({events, onClick}) => {
    
     return (
     
   <div>
     <h1>Events</h1>
-    <ul>
+    <List>
           
      {events.length > 0 &&
         events.map(({ name, data, time, place, description, id, category, picture, priority }) => {
           return (
-            <li key={id}>
+            <ListItem key={id}>
                 <div>
                    
                 </div>
@@ -20,15 +23,15 @@ const EventsList = ({events, onClick}) => {
                     <p>{place}</p>
                     <p>{description}</p>
                     <p>{category}</p>
-                    <img src={picture} alt="event" />
+                    <img src={noImage} alt="" width="180" height="260" />
                     <p>{priority}</p>
                 </div>              
                 <button type='button' onClick={() => onClick(id)}>Delete</button> 
-            </li>
+            </ListItem>
           );
         })} 
   
-    </ul>
+    </List>
 
   </div>
   );
