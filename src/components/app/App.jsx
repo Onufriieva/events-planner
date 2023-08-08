@@ -1,9 +1,9 @@
-import { Routes, Route } from 'react-router-dom';
+// import { Routes, Route } from 'react-router-dom';
 // import Home from '../../pages/homePage/HomePages';
 import Home from '../home/Home'
-import Form from "../../pages/formPage/FormPage";
+// import Form from "../../pages/formPage/FormPage";
 // import EventsListPage from "../../pages/eventsPage/EventsPage";
-import EventsList from 'components/eventsList/EventsList';
+// import EventsList from 'components/eventsList/EventsList';
 
 
 
