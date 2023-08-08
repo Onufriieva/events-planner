@@ -1,17 +1,26 @@
 import { Routes, Route } from 'react-router-dom';
-import { lazy } from 'react';
-import Home from '../home/Home';
+// import Home from '../../pages/homePage/HomePages';
+import Home from '../home/Home'
+import Form from "../../pages/formPage/FormPage";
+import EventsList from "../../pages/eventsPage/EventsPage";
+// import EventsList from 'components/eventsList/EventsList';
 
-export const App = () => {
 
-    return(
-        <div>
-            <Home/>
-            <Routes>
-               <Route index="/" element={<Home/>} />
-            </Routes>   
 
-        </div>
-  
+
+export const App = () => {  
+
+    return (
+      <div>   
+        <Home/>
+        <Routes>
+       
+          {/* <Route index="/" element={<Home/>} /> */}
+            <Route index="/" element={<EventsList/>} />
+            <Route path="form" element={<Form/>} />
+        
+        </Routes>
+      </div>
     );
-}
+  };
+  

@@ -1,141 +1,159 @@
-import { Link, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-// import { events } from '../../db';
+// import { Link, useLocation } from 'react-router-dom';
+import { Component } from "react";
+import EventsList from 'components/eventsList/EventsList';
+import Form from "components/form/Form";
+import { nanoid } from 'nanoid';
 
-const Home = () => {
-    const location = useLocation();
-    const [events, setEvents] = useState([ {
-        name: "event1",
-        date: "",
-        time: "",
-        place: "Kyiv",
-        description: "",
-        id: "1"
-    },
-        {
-        name: "event2",
-        date: "",
-        time: "",
-        place: "Lviv",
-        description: "",
-        id: "2"
-    },
-    {
-        name: "event3",
-        date: "",
-        time: "",
-        place: "Odessa",
-        description: "",
-        id: "3"
-    },
-    {
-        name: "event4",
-        date: "",
-        time: "",
-        place: "Odessa",
-        description: "",
-        id: "4"
-    },
-    {
-        name: "event5",
-        date: "",
-        time: "",
-        place: "Kyiv",
-        description: "",
-        id: "5"
-    },
-    {
-        name: "event6",
-        date: "",
-        time: "",
-        place: "Lviv",
-        description: "",
-        id: "6"
-    },
-    {
-        name: "event7",
-        date: "",
-        time: "",
-        place: "Odessa",
-        description: "",
-        id: "7"
-    },
-    {
-        name: "event8",
-        date: "",
-        time: "",
-        place: "Kyiv",
-        description: "",
-        id: "8"
-    },
-    {
-        name: "event9",
-        date: "",
-        time: "",
-        place: "",
-        description: "Lviv",
-        id: "9"
-    },
-    {
-        name: "event10",
-        date: "",
-        time: "",
-        place: "Odessa",
-        description: "",
-        id: "10"
-    },
-    {
-        name: "event11",
-        date: "",
-        time: "",
-        place: "Kyiv",
-        description: "",
-        id: "11"
-    },
-    {
-        name: "event12",
-        date: "",
-        time: "",
-        place: "Lviv",
-        description: "",
-        id: "12"
-    },]);
 
+
+// const Home = ({events, onClick}) => {
    
-
-  return (
+//     return (
     
-  <div>
-    <h1>Events</h1>
-    <ul>
-       
-    {events.length > 0 &&
-        events.map(({ name, data, time, place, description, id }) => {
-          return (
-            <li key={id}>
-                <div>
-                    <a href="">
-                        <img src="" alt="" />
-                    </a>
-                </div>
-                <div>
-                    <p>{name}</p>
-                    <p>{data}</p>
-                    <p>{time}</p>
-                    <p>{place}</p>
-                    <p>{description}</p>
-                </div>              
-              
-            </li>
-          );
-        })}
+//   <div>
+//     <h1>Events</h1>
+//     <ul>
+          
+//      {events.length > 0 &&
+//         events.map(({ name, data, time, place, description, id, category, picture, priority }) => {
+//           return (
+//             <li key={id}>
+//                 <div>
+                   
+//                 </div>
+//                 <div>
+//                     <p>{name}</p>
+//                     <p>{data}</p>
+//                     <p>{time}</p>
+//                     <p>{place}</p>
+//                     <p>{description}</p>
+//                     <p>{category}</p>
+//                     <img src={picture} alt="event" />
+//                     <p>{priority}</p>
+//                 </div>              
+//                 <button type='button' onClick={() => onClick(id)}>Delete</button> 
+//             </li>
+//           );
+//         })} 
   
-    </ul>
+//     </ul>
 
-  </div>
-  );
- }
-
-  
+//   </div>
+//   );
+//  }  
  
+// export default Home 
+
+
+export class Home extends Component {
+  state = {
+      events: [   
+      {id: 'id-1', name: 'event1', date: '1', time: '', place: 'Kyiv', description: '', category: '', picture: '', priority: ''},
+      {id: 'id-2', name: 'event2', date: '1', time: '', place: 'Kyiv', description: '', category: '', picture: '', priority: ''},
+      {id: 'id-3', name: 'event3', date: '1', time: '', place: 'Kyiv', description: '', category: '', picture: '', priority: ''},
+      {id: 'id-4', name: 'event4', date: '1', time: '', place: 'Kyiv', description: '', category: '', picture: '', priority: ''},],
+      name: '',
+      date: '',
+      time: '',
+      place: '',
+      description: '',
+      category: '',
+      picture: '',
+      priority: ''
+    }
+
+ 
+
+  componentDidMount() {
+    const events = localStorage.getItem('events');
+    const parsedEvents = JSON.parse(events);
+
+    if(parsedEvents) {
+      this.setState({events: parsedEvents})
+    }
+  };
+
+
+  componentDidUpdate(prevProps, prevState) {
+    if(this.state.events !== prevState.events) {
+      localStorage.setItem('events', JSON.stringify(this.state.events))
+    }
+  }
+
+ 
+  handleInputChange = (e) => {
+    this.setState(
+        {[e.currentTarget.name]: e.currentTarget.value}
+    );
+  }
+
+
+  handleSubmit = e => {
+      e.preventDefault();
+      this.setState(prevState => {
+      const newEvent = {
+        id: nanoid(),
+        name: this.state.name,
+        date: this.state.date,
+        time: this.state.time,
+        place: this.state.place,
+        description: this.state.description,
+        category: this.state.category,
+        picture: this.state.picture,
+        priority: this.state.priority,
+      };
+      return {
+        events: [newEvent, ...prevState.events],
+        name: '',
+        date: '',
+        time: '',
+        place: '',
+        description: '',
+        category: '',
+        picture: '',
+        priority: ''
+      };
+    });
+  };
+
+
+
+  removeEvents = (eventId) => {  
+    this.setState(prevState => ({   
+      events: prevState.events.filter(event => event.id !== eventId),
+    }))
+  }
+
+
+  
+  render() {
+
+    return (
+      <div>
+           
+
+        <Form 
+       onSubmit={this.handleSubmit}
+       onChange={this.handleInputChange}
+       nameValue={this.state.name}
+       dateValue={this.state.date}
+       timeValue={this.state.time}
+       placeValue={this.state.place}
+       descriptionValue={this.state.description}   
+       categoryValue={this.state.category}
+       pictureValue={this.state.picture}
+       priorityValue={this.state.priority}   
+       /> 
+        
+
+       <EventsList
+       events={this.state.events}  
+       onClick={this.removeEvents}  
+       />
+      
+      </div>
+    );
+  };
+}
+
 export default Home 
